@@ -31,9 +31,9 @@ def home():
                     
                     information = agent3.mainFunction()
 
-                    return render_template('index.html', title="INFORMATION", information=information)
+                    return render_template('index.html', title="INFORMATION", information="DONE")
                 else:
-                    return render_template('index.html', title="NO CODE YET", information="")
+                    return render_template('index.html', title="NO CODE YET", information="FILE NOT SUPPORTED")
             else:
                 return render_template('index.html', title="NO CODE YET", information="")
     else:
