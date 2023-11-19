@@ -23,8 +23,11 @@ class Agent3():
     def getWebPage(self):
         #Request the webpage
         response = requests.get(self.url)
-        # file  = open("pagina.txt", "r", encoding="utf-8")  > LOCAL
-        # response_html = file.read()  > LOCAL
+        
+        #LOCAL-------------->
+        # file  = open("pagina.txt", "r", encoding="utf-8")
+        # response_html = file.read()
+        
         #Convert the request into a text
         response_html = response.text
         #Parse to html the text
@@ -59,7 +62,13 @@ class Agent3():
                 for list in ul:
                     ul2 = str(list).split('<ul>')
                     for item in ul2:
-                        text = re.search(self.usedFunction, item)
+                        #BORRAR SI NO FUNCIONA------------
+                        for func in self.usedFunction:
+                            text = re.search(func, item)
+                            if(text != None):
+                                break
+                        #PERMANECER
+                        # text = re.search(self.usedFunction, item)
                         if(functionFound):
                             final = str(item).split('</ul>')
                             information.append(final[0])
@@ -68,7 +77,13 @@ class Agent3():
                             functionFound = True
                             li = str(list).split('<li>')
                             for i in li:
-                                text = re.search(self.usedFunction, i)
+                                #BORRAR SI NO FUNCIONA------------
+                                for func in self.usedFunction:
+                                    text = re.search(func, i)
+                                    if(text != None):
+                                        break
+                                #PERMANECER
+                                # text = re.search(self.usedFunction, i)
                                 if(text):
                                     if(str(h2).split('</h2>')[0] not in information):
                                         information.append(str(h2).split('</h2>')[0])
@@ -94,9 +109,13 @@ class Agent3():
         
         #Get the information
         information = self.getInformation(section)
-        # Convert the list of strings to an unique text
-        for info in information:
-            self.Text += info + "\n"
+
+        # Convert the list of strings to an unique text else return an empty array
+        if(len(information) != 0):
+            for info in information:
+                self.Text += info + "\n"
+        else:
+            return []
         
         # Delete all the tags to just keep the primary information
         block = self.getBlockText(self.Text)

@@ -16,7 +16,22 @@
                 <div class="mb-5">
                     <form action="#" method="post" enctype="multipart/form-data" accept="*.py">
                         <input type="file" name="file" accept="*.py"/>
-                        <button type="submit" value="submit" class="btn btn-outline-primary">SUBMIT</button>
+                        <p class="p-3">
+                            <select id="versions" name="versions" required>
+                                <option value="" selected>Select a version</option>
+                                <option value="TensorFlow 2.15.0">TensorFlow 2.15.0</option>
+                                <option value="TensorFlow 2.14.1">TensorFlow 2.14.1</option>
+                                <option value="TensorFlow 2.15.0-rc1">TensorFlow 2.15.0-rc1</option>
+                                <option value="TensorFlow 2.15.0-rc0">TensorFlow 2.15.0-rc0</option>
+                                <option value="TensorFlow 2.14.0">TensorFlow 2.14.0</option>
+                                <option value="TensorFlow 2.13.1">TensorFlow 2.13.1</option>
+                                <option value="TensorFlow 2.14.0-rc1">TensorFlow 2.14.0-rc1</option>
+                                <option value="TensorFlow 2.14.0-rc0">TensorFlow 2.14.0-rc0</option>
+                                <option value="TensorFlow 2.13.0">TensorFlow 2.13.0</option>
+                                <option value="TensorFlow 2.12.1">TensorFlow 2.12.1</option>
+                            </select>
+                        </p>
+                        <p><button type="submit" value="submit" class="btn btn-outline-primary">SUBMIT</button></p>
                     </form>
                 </div>
                 <div class="card" style="width: 50rem; height: 50rem;">

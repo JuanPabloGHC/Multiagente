@@ -13,12 +13,13 @@ def home():
     target = os.path.join(app.instance_path, 'codes')
     if not os.path.isdir(target):
         os.makedirs(target)
-    #Es un post
+    # POST method
     if request.method == "POST":
-        #Comprobar si la petición contiene la parte del fichero
+        # Check if the request contains the file part
         if "file" in request.files:
             file = request.files["file"]
-            #Comprobar que si se seleccionó un fichero para obtener su información
+            version = str(request.form.get('versions'))
+            # Was a file selected?
             if file.filename:
                 r = re.match(r".*\.py", file.filename)
                 if (r != None):
@@ -29,8 +30,8 @@ def home():
                     if(len(modules_list) == 0):
                         return render_template('index.html', title="NO FUNCTIONS FOUND", information="")
 
-                    agent3 = Agent3("TensorFlow 2.14.0", modules_list[0])
-                    
+                    agent3 = Agent3(version, modules_list)
+
                     information = agent3.mainFunction()
 
                     if len(information) == 0:
