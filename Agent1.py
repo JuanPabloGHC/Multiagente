@@ -27,13 +27,16 @@ def home():
                     file.save(destination)
                     modules_list = agent2.getIdentifiersFromFile("instance/codes/" + file.filename)
 
+                    if(len(modules_list) == 0):
+                        return render_template('index.html', title="NO FUNCTIONS FOUND", information="")
+
                     agent3 = Agent3("TensorFlow 2.14.0", modules_list[0])
                     
                     information = agent3.mainFunction()
 
                     return render_template('index.html', title="INFORMATION", information="DONE")
                 else:
-                    return render_template('index.html', title="NO CODE YET", information="FILE NOT SUPPORTED")
+                    return render_template('index.html', title="FILE NOT SUPPORTED", information="")
             else:
                 return render_template('index.html', title="NO CODE YET", information="")
     else:
