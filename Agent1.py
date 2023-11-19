@@ -21,7 +21,6 @@ def home():
             #Comprobar que si se seleccionó un fichero para obtener su información
             if file.filename:
                 r = re.match(r".*\.py", file.filename)
-                print(r)
                 if (r != None):
                     destination = '/'.join([target, file.filename])
                     file.save(destination)
@@ -34,13 +33,16 @@ def home():
                     
                     information = agent3.mainFunction()
 
-                    return render_template('index.html', title="INFORMATION", information="DONE")
+                    if len(information) == 0:
+                        return render_template('index.html', title="THERE IS NO INFORMATION", information=[])
+                    else:
+                        return render_template('index.html', title="INFORMATION", information=information)
                 else:
-                    return render_template('index.html', title="FILE NOT SUPPORTED", information="")
+                    return render_template('index.html', title="FILE NOT SUPPORTED", information=[])
             else:
-                return render_template('index.html', title="NO CODE YET", information="")
+                return render_template('index.html', title="NO CODE YET", information=[])
     else:
-        return render_template('index.html', title="NO CODE YET", information="")
+        return render_template('index.html', title="NO CODE YET", information=[])
 
 @app.route("/response", methods=['GET', 'POST'])
 def response():

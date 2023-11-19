@@ -19,14 +19,14 @@
                         <button type="submit" value="submit" class="btn btn-outline-primary">SUBMIT</button>
                     </form>
                 </div>
-                <div class="card" style="width: 50rem; height: 25rem;">
+                <div class="card" style="width: 50rem; height: 50rem;">
                     <div class="card-body">
                       <h5 class="card-title text-info">{{title}}</h5>
                       <p id="information" class="card-text text-start">
-                        <!-- {% for item in file %}
-                            {{item}}
-                        {% endfor %} -->
-                        {{information}}
+                        {% for info in information %}
+                            <p class="text-start">{{info}}</p>
+                        {% endfor %}
+                        <!-- {{information}} -->
                       </p>
                     </div>
                   </div>
